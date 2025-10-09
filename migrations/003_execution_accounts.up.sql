@@ -1,6 +1,7 @@
 CREATE TABLE `${NETWORK_NAME}`.int_address_last_access_local on cluster '{cluster}' (
     `address` String COMMENT 'The address of the account' CODEC(ZSTD(1)),
     `block_number` UInt32 COMMENT 'The block number of the last access' CODEC(ZSTD(1)),
+    `is_deleted` Bool COMMENT 'Whether the account is deleted' CODEC(ZSTD(1))
 ) ENGINE = ReplicatedReplacingMergeTree(
     '/clickhouse/{installation}/{cluster}/tables/{shard}/{database}/{table}',
     '{replica}',
